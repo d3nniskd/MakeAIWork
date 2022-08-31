@@ -13,3 +13,5 @@ pyvenv.cfg
 lib64
 etc/
 share/
+notebooks/.DS_Store
+.DS_Store
