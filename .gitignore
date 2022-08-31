@@ -13,4 +13,8 @@ pyvenv.cfg
 lib64
 etc/
 share/
+<<<<<<< HEAD
+=======
+notebooks/.DS_Store
+>>>>>>> e0ed681 (exercise4)
 .DS_Store
