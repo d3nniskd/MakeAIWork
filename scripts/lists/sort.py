@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
+
  # Author: Jacques de Hooge
  
 # Store 4 strings into a list
