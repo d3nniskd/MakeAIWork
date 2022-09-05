@@ -33,3 +33,15 @@ for i in range(0, len(vector1)):
     res_list.append(vector1[i] + vector2[i])
   
 print ("Resultant list is : " + str(res_list))
+
+# de oplosseing van jeroen:
+# def addVectors(v1, v2):
+#     # start met lege vector
+#     resultaat = []
+    
+#     # voor elke rij
+#     for i 
+    
+# v1 = list[1, 2]
+# v2 = list[2, 1]
+# w = addVectors(v1, v2)
