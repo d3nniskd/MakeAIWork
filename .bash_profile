@@ -1,0 +1,1 @@
+source ~/Repo/MakeAIWork/env/bin/activate
