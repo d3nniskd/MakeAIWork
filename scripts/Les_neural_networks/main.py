@@ -1,6 +1,9 @@
 from link import Link
 from node import Node
 
+def loss
+def softmax
+
 # tesla = Car('Tesla',700, 800)
 # bmw = Car('Bmw', 800, 600)
 # track = Track(tesla,bmw)
