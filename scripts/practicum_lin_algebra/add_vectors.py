@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # wat hebben we nodig voor optellen van vectoren?
 # lists om de vectoren in op te slaan
 # 
@@ -45,3 +46,8 @@ print ("Resultant list is : " + str(res_list))
 # v1 = list[1, 2]
 # v2 = list[2, 1]
 # w = addVectors(v1, v2)
+=======
+#!/usr/bin/env python3
+
+# 
+>>>>>>> 577eadf0c66b9a3fe06c2bb5f53ce771d4741343
