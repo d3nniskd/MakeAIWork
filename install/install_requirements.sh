@@ -10,7 +10,7 @@ case "${os}" in
     Linux*)     machine="Linux";;
     Darwin*)    
       machine="Mac"
-      brew update && brew install freeglut
+     # brew update && brew install freeglut
       export LIBGL_ALLOW_SOFTWARE=1
       ;;
     CYGWIN*)    machine="Cygwin";;
