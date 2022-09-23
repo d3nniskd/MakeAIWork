@@ -1,5 +1,5 @@
 Name, Diameter, Mass, Inclination, Eccentricity, Semi_majorAxis, SurfaceGravity, OrbitalPeriod, SiderealRotation, Satellites, Image
-Mercury, 4879.4, 3.302×10^23, 7.004, 0.20563593, 0.38709927, 3.7, 0.241, 58.65, 0
+Mercury, 4879.4, 3.302×10^23, 7.004, 0.20563593, 0.38709927, 3.7, 0.241, 58.65, 0, mercurius.jpg
 Venus, 12103.6, 4.869×10^24, 3.39471, 0.00677672, 0.72333566, 8.87, 0.615, 243.0187, 0, venus.png
 Earth, 12756.3, 5.974×10^24, 0.00005, 0.01671123, 1.00000261, 9.78, 1, 0.997271, 1, earth.jpg
 Mars, 6794.4, 6.419×10^23, 1.85061, 0.0933941, 1.52371034, 3.71, 1.881, 1.02595, 2, mars.jpg
