@@ -7,20 +7,28 @@ file = "datasets/car_sonar/default.samples"
 names = ['sonar1', 'sonar2', 'sonar3', 'angle']
 
 # Read dataset to pandas dataframe
-# irisdata = pd.read_csv(url, names=names)
 sonarData = pd.read_csv(file, names=names, delim_whitespace=True)
+
+# To see what this dataset actually looks like
+sonarData.head()
 
 # splitten van data in X (de input) en y (de controlle aan het eind)
 X = sonarData.iloc[:, 0:3] # tot 3
+# y = sonarData.select_dtypes(include=[object])
 y = sonarData.iloc[:, 3]
+
+# bekijk waarden
+print (X)
+print (y)
 
 # Train/Test-split to avoid over-fitting
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)
 
+# Laat unieke waarden zien
+y.unique()
 
-
-# Feature scaling slaan we over
+# Feature scaling slaan we over?
 # from sklearn.preprocessing import StandardScaler
 # scaler = StandardScaler()
 # scaler.fit(X_train)
@@ -28,8 +36,6 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)
 # Nu kunnen we het NN daadwerkelijk gaan trainen
 from sklearn.neural_network import MLPClassifier
 mlp = MLPClassifier(hidden_layer_sizes=(10, 10, 10), max_iter=1000)
-# print(y_train.values)
-# print(y_train.values.ravel())
 mlp.fit(X_train, y_train.values.ravel())
 # The first parameter, hidden_layer_sizes, is used to set the size of the hidden layers.
 # In our script we will create three layers of 10 nodes each.
