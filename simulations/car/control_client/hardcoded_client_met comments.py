@@ -90,7 +90,7 @@ class HardcodedClient: # wordt helemaal onderaan aangeroepen
            
         targetObstacleDistance = (nearestObstacleDistance + nextObstacleDistance) / 2 # ik weet de hoek tussen beide pylonnen, en ga daar midden tussendoor rijden
 
-        self.steeringAngle = (nearestObstacleAngle + nextObstacleAngle) / 2 # wordt bepaald door 2 pillonnen
+        self.steeringAngle = (nearestObstacleAngle + nextObstacleAngle) / 2 # wordt bepaald door 2 pionnen
         self.targetVelocity = pm.getTargetVelocity (self.steeringAngle) # bepaald snelheid op basis van stuurhoek
 
     def sonarSweep (self):
@@ -124,7 +124,7 @@ class HardcodedClient: # wordt helemaal onderaan aangeroepen
         else:
             self.sonarSweep ()
 
-    def output (self): # hier gaan we ahv berekeingen gegevens terugsturen naar auto (via socketwrapper). deze functie komt precies zo in mijn eigen programma
+    def output (self): # hier gaan we ahv berekeningen gegevens terugsturen naar auto (via socketwrapper). deze functie komt precies zo in mijn eigen programma
         actuators = {
             'steeringAngle': self.steeringAngle,
             'targetVelocity': self.targetVelocity
