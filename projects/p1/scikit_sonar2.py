@@ -1,14 +1,18 @@
 import pandas as pd
 
 # Location of file
-file1 = "datasets/car_sonar/default.samples"
+file = './datasets/car_sonar/default.samples.csv'
+# absoluut pad
+# file = '/Users/dennis/Repo/MakeAIWork/projects/p1/datasets/car_sonar/default.samples'
 
 # Assign column names to the dataset
 names = ['sonar1', 'sonar2', 'sonar3', 'angle']
 
 # Read dataset to pandas dataframe
-sonarData = pd.read_csv(file1, names=names, delim_whitespace=True)
-
+# sonarData = pd.read_csv(file, names=names, delim_whitespace=True)
+sonarData = pd.read_csv(file, names=names)
+# sep=','
+ 
 # To see what this dataset actually looks like
 sonarData.head()
 
@@ -28,10 +32,10 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)
 # Laat unieke waarden zien
 y.unique()
 
-# Feature scaling slaan we over?
-# from sklearn.preprocessing import StandardScaler
-# scaler = StandardScaler()
-# scaler.fit(X_train)
+# Feature scaling slaan we over? Nee is nodig
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+scaler.fit(X_train)
 
 # Nu kunnen we het NN daadwerkelijk gaan trainen
 from sklearn.neural_network import MLPClassifier

@@ -8,21 +8,16 @@ import pickle
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
 import pandas as pd
-
+import numpy as np
 
 ss.path +=  [os.path.abspath (relPath) for relPath in  ('..',)] 
 
 import socket_wrapper as sw
 import parameters as pm
 
-# methode amat
-# p_model = "pickle_model.pkl"
-# with open(p_model, 'rb') as file:
-#     model = pickle.load(file)
-
 # lokatie deze file ->     /Users/dennis/Repo/MakeAIWork/simulations/car/control_client/nncoded_client.py
 # lokatie pickeld_model -> /Users/dennis/Repo/MakeAIWork/projects/p1/pickle_model.pkl
-model = pickle.load(open('../../projects/p1/pickle_model.pkl', 'rb'))
+model_sonar = pickle.load(open('../../../projects/p1/pickle_model.pkl', 'rb'))
 # dit verderop in de code aanroepen -> pickled_model.predict(X_test)
 
 class NncodedClient:
@@ -56,7 +51,7 @@ class NncodedClient:
         else:
             self.sonarDistances = sensors ['sonarDistances']
             if self.model == None:
-                self.model = model
+                self.model = model_sonar
 
     def lidarSweep (self): # we kijken in dit stukje code steeds naar 2 pionnen. Dit stukje van de code is hetgeen we echt zelf moeten gaan herschrijven
         nearestObstacleDistance = pm.finity # hier setten we die op 20, dus hij ziet pionnen tot 20m
@@ -85,8 +80,8 @@ class NncodedClient:
         self.targetVelocity = pm.getTargetVelocity (self.steeringAngle) # bepaald snelheid op basis van stuurhoek
 
     def sonarSweep (self):
-        steeringangle = self.model.predict(self.sonarDistances)
-        self.steeringAngle = float(steeringangle[0][0])
+        steeringangle = self.model.predict(np.array([self.sonarDistances]))
+        self.steeringAngle = float(steeringangle[0]) # koppelen
         self.targetVelocity = pm.getTargetVelocity (self.steeringAngle)
         # dit is stuk code dat door de NN moet worden bestuurd als ik het goed begrijp
         # obstacleDistances = [pm.finity for sectorIndex in range (3)]
@@ -129,7 +124,7 @@ class NncodedClient:
 
         self.socketWrapper.send (actuators)
 
-    def logLidarTraining (self): # dit gaat over hoe je je deafault.sample vult
+    def logLidarTraining (self): # dit gaat over hoe je je default.sample vult
         sample = [pm.finity for entryIndex in range (pm.lidarInputDim + 1)]
 
         for lidarAngle in range (-self.halfApertureAngle, self.halfApertureAngle):
