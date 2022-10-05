@@ -49,13 +49,21 @@ class NncodedClient:
             
         if 'lidarDistances' in sensors:
             self.lidarDistances = sensors ['lidarDistances']
+            if self.model == None:
+                self.model = model_lidar
         else:
             self.sonarDistances = sensors ['sonarDistances']
             if self.model == None:
                 self.model = model_sonar
 
     def lidarSweep (self): 
-        steeringangle = self.model.predict(np.array([self.lidarDistances]))
+        sample = [pm.finity for entryIndex in range (pm.lidarInputDim + 1)]
+
+        for lidarAngle in range (-self.halfApertureAngle, self.halfApertureAngle):
+            sectorIndex = round (lidarAngle / self.sectorAngle)
+            sample [sectorIndex] = min (sample [sectorIndex], self.lidarDistances [lidarAngle])
+
+        steeringangle = self.model.predict(np.array([sample[0:16]]))
         self.steeringAngle = float(steeringangle[0]) 
         self.targetVelocity = pm.getTargetVelocity (self.steeringAngle) #steeringAngle (stuurhoek) koppelen aan targetVelocity
 
