@@ -1,12 +1,12 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.neural_network import MLPRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 from sklearn import preprocessing
 
-# path_to_file = 'datasets/car_lidar/default.samples' # indien gestart vanuit p1
-path_to_file = 'projects/p1/datasets/car_lidar/default.samples' # indien gestart vanuit MAIW
+path_to_file = 'datasets/car_lidar/default.samples'
 
 names = ['lidar1', 'lidar2', 'lidar3', 'lidar4', 'lidar5', 'lidar6', 'lidar7', 'lidar8', 'lidar9', 'lidar10', 'lidar11', 'lidar12', 'lidar13', 'lidar14', 'lidar15', 'lidar16', 'angle']
 
@@ -27,7 +27,11 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)
 print(X_train)
 print(y_train)
 
-model = MLPRegressor(hidden_layer_sizes=(100,), max_iter=500, random_state=1)
+model = LinearRegression()
+
+# from sklearn.preprocessing import StandardScaler
+# scaler = StandardScaler()
+# scaler.fit(X_train)
 
 model.fit(X_train, y_train)
 
